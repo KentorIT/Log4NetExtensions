@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/KentorIT/Log4NetExtensions/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/KentorIT/Log4NetExtensions</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/KentorIT/Log4NetExtensions/blob/master/Kentor.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/KentorIT/Log4NetExtensions/master/Kentor.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial release</releaseNotes>
