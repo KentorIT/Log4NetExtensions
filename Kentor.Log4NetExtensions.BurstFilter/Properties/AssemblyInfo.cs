@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Kentor.Log4NetExtensions.BurstFilter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("log4net filter for limit log bursts")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Kentor IT")]
 [assembly: AssemblyProduct("Kentor.Log4NetExtensions.BurstFilter")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright Kentor © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
