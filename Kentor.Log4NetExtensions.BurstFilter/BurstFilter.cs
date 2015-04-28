@@ -14,7 +14,7 @@ namespace Kentor.Log4NetExtensions
             BurstLength = TimeSpan.FromMinutes(1);
             BurstSize = 60;
         }
-        private static readonly ConcurrentQueue<DateTime> queuedEvents = new ConcurrentQueue<DateTime>();
+        private readonly ConcurrentQueue<DateTime> queuedEvents = new ConcurrentQueue<DateTime>();
         public override log4net.Filter.FilterDecision Decide(log4net.Core.LoggingEvent loggingEvent)
         {
             var utcNow = DateTime.UtcNow;
