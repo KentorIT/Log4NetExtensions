@@ -1,0 +1,1 @@
+nuget pack Kentor.Log4NetExtensions.BurstFilter.csproj -Prop Configuration=Release

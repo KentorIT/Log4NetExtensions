@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>log4net.BurstFilter</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
@@ -14,5 +14,6 @@
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright Kentor © 2015</copyright>
     <tags>log4net</tags>
+    <summary>A BurstFilter for log4net. Use to throttle log bursts.</summary>
   </metadata>
 </package>
