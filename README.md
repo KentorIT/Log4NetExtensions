@@ -1,5 +1,5 @@
 # Log4NetExtensions
-Currently only a BurstFilter for log4net
+A BurstFilter for log4net. Use this to throttle SmtpAppenders and other Appenders.
 
 Example configuration
 
@@ -15,7 +15,7 @@ Example configuration
           <password value="password"/>
           <lossy value="false" />
           <threshold value="ERROR"/>
-          <filter type="Kentor.Log4NetExtensions.BurstFilter">
+          <filter type="Kentor.Log4NetExtensions.BurstFilter,Kentor.Log4NetExtensions.BurstFilter">
 		    <!-- Allow two mails a minute on average, with bursts up to 20 mails -->
             <BurstLength value="00:10:00"/>
             <BurstSize value="20"/>
