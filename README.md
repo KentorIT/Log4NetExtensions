@@ -29,3 +29,5 @@ Example configuration
           <appender-ref ref="SMTPAppender" />
         </root>
     </log4net>
+
+Read more about the [BurstFilter here](http://coding.abel.nu/2015/04/burstfilter-for-log4net-how-to-save-your-mailbox/)
