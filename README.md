@@ -1,6 +1,8 @@
 # Log4NetExtensions
 A BurstFilter for log4net. Use this to throttle SmtpAppenders and other Appenders.
 
+NuGet package available at [log4net.BurstFilter](https://www.nuget.org/packages/log4net.BurstFilter/)
+
 Example configuration
 
     <log4net>
