@@ -17,24 +17,30 @@ namespace Kentor.Log4NetExtensions
         private readonly ConcurrentQueue<DateTime> queuedEvents = new ConcurrentQueue<DateTime>();
         public override log4net.Filter.FilterDecision Decide(log4net.Core.LoggingEvent loggingEvent)
         {
-            var utcNow = DateTime.UtcNow;
-            queuedEvents.Enqueue(utcNow);
-            DateTime firstTimeUtc = DateTime.MinValue;
+            var logTime = loggingEvent.TimeStamp;
+            DateTime firstLogTime = DateTime.MinValue;
             bool hasEntry = false;
-            while (queuedEvents.Count > BurstSize)
+            if (queuedEvents.Count + 1 > BurstSize)
             {
-                if (queuedEvents.TryDequeue(out firstTimeUtc))
+                if (queuedEvents.TryPeek(out firstLogTime))
                 {
                     hasEntry = true;
                 }
             }
             if (hasEntry)
             {
-                if (firstTimeUtc.Add(BurstLength) > utcNow)
+                if (firstLogTime.Add(BurstLength) > logTime)
                 {
                     return log4net.Filter.FilterDecision.Deny;
                 }
             }
+            if (queuedEvents.Count + 1 > BurstSize)
+            {
+                // Trim peaked event
+                queuedEvents.TryDequeue(out firstLogTime);
+            }
+
+            queuedEvents.Enqueue(logTime);
             return log4net.Filter.FilterDecision.Neutral;
         }
 
