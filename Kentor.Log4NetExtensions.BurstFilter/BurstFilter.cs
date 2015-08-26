@@ -18,26 +18,21 @@ namespace Kentor.Log4NetExtensions
         public override log4net.Filter.FilterDecision Decide(log4net.Core.LoggingEvent loggingEvent)
         {
             var logTime = loggingEvent.TimeStamp;
-            DateTime firstLogTime = DateTime.MinValue;
-            bool hasEntry = false;
+            DateTime firstLogTime;
             if (queuedEvents.Count + 1 > BurstSize)
             {
                 if (queuedEvents.TryPeek(out firstLogTime))
                 {
-                    hasEntry = true;
+                    if (firstLogTime.Add(BurstLength) > logTime)
+                    {
+                        return log4net.Filter.FilterDecision.Deny;
+                    }
+                    else
+                    {
+                        // Trim peaked event
+                        queuedEvents.TryDequeue(out firstLogTime);
+                    }
                 }
-            }
-            if (hasEntry)
-            {
-                if (firstLogTime.Add(BurstLength) > logTime)
-                {
-                    return log4net.Filter.FilterDecision.Deny;
-                }
-            }
-            if (queuedEvents.Count + 1 > BurstSize)
-            {
-                // Trim peaked event
-                queuedEvents.TryDequeue(out firstLogTime);
             }
 
             queuedEvents.Enqueue(logTime);
