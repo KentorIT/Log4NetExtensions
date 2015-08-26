@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Kentor.Log4NetExtensions
 {
+    /// <summary>
+    /// Burst filter.
+    /// Limits the number of <see cref="log4net.Core.LoggingEvent"/>s that will be logged during a given time interval.
+    /// At most <see cref="BurstSize"/> <see cref="log4net.Core.LoggingEvent"/>s will be logged during a rolling time of <see cref="BurstLength"/>
+    /// </summary>
     public class BurstFilter : log4net.Filter.FilterSkeleton
     {
         public BurstFilter()
@@ -39,7 +44,20 @@ namespace Kentor.Log4NetExtensions
             return log4net.Filter.FilterDecision.Neutral;
         }
 
+        /// <summary>
+        /// Gets or sets the burst length. Default value is one minute (00:01:00).
+        /// </summary>
+        /// <value>
+        /// The burst length, a rolling interval where at most <see cref="BurstSize"/> <see cref="log4net.Core.LoggingEvent"/>s will be passed through
+        /// </value>
         public TimeSpan BurstLength { get; set; }
+
+        /// <summary>
+        /// Gets or sets the burst size. Default value is 60.
+        /// </summary>
+        /// <value>
+        /// The burst size, the maximum number of <see cref="log4net.Core.LoggingEvent"/>s will be passed through during <see cref="BurstLength"/>
+        /// </value>
         public int BurstSize { get; set; }
     }
 }
