@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/KentorIT/Log4NetExtensions/master/Kentor.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Bug fix: Throttling should be leaky</releaseNotes>
     <copyright>Copyright Kentor © 2015</copyright>
     <tags>log4net</tags>
     <summary>A BurstFilter for log4net. Use to throttle log bursts.</summary>
