@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,28 +18,27 @@ namespace Kentor.Log4NetExtensions
             BurstLength = TimeSpan.FromMinutes(1);
             BurstSize = 60;
         }
-        private readonly ConcurrentQueue<DateTime> queuedEvents = new ConcurrentQueue<DateTime>();
+        private readonly Queue<DateTime> queuedEvents = new Queue<DateTime>();
         public override log4net.Filter.FilterDecision Decide(log4net.Core.LoggingEvent loggingEvent)
         {
             var logTime = loggingEvent.TimeStamp;
-            DateTime firstLogTime;
-            if (queuedEvents.Count + 1 > BurstSize)
+            lock (queuedEvents)
             {
-                if (queuedEvents.TryPeek(out firstLogTime))
+                if (queuedEvents.Count + 1 > BurstSize)
                 {
-                    if (firstLogTime.Add(BurstLength) > logTime)
+                    if (queuedEvents.Peek().Add(BurstLength) > logTime)
                     {
                         return log4net.Filter.FilterDecision.Deny;
                     }
                     else
                     {
                         // Trim peaked event
-                        queuedEvents.TryDequeue(out firstLogTime);
+                        queuedEvents.Dequeue();
                     }
                 }
-            }
 
-            queuedEvents.Enqueue(logTime);
+                queuedEvents.Enqueue(logTime);
+            }
             return log4net.Filter.FilterDecision.Neutral;
         }
 
