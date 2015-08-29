@@ -86,5 +86,23 @@ namespace Kentor.Log4NetExtensions.Tests
             var result15 = filter.Decide(GetLoggingEventWithOffset(15));
             Assert.AreEqual(log4net.Filter.FilterDecision.Neutral, result15);
         }
+
+        [TestMethod]
+        public void CheckDefaultValues()
+        {
+            var filter = new BurstFilter();
+            Assert.AreEqual(60, filter.BurstSize);
+            Assert.AreEqual(TimeSpan.FromMinutes(1), filter.BurstLength);
+        }
+
+        [TestMethod]
+        public void ChangeValues()
+        {
+            var filter = new BurstFilter();
+            filter.BurstLength = TimeSpan.FromMinutes(3);
+            filter.BurstSize = 4;
+            Assert.AreEqual(4, filter.BurstSize);
+            Assert.AreEqual(TimeSpan.FromMinutes(3), filter.BurstLength);
+        }
     }
 }

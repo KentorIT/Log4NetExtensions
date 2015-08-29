@@ -24,7 +24,7 @@ namespace Kentor.Log4NetExtensions
             var logTime = loggingEvent.TimeStamp;
             lock (queuedEvents)
             {
-                if (queuedEvents.Count + 1 > BurstSize)
+                if (queuedEvents.Count > targetQueueLength)
                 {
                     if (queuedEvents.Peek().Add(BurstLength) > logTime)
                     {
@@ -56,6 +56,21 @@ namespace Kentor.Log4NetExtensions
         /// <value>
         /// The burst size, the maximum number of <see cref="log4net.Core.LoggingEvent"/>s will be passed through during <see cref="BurstLength"/>
         /// </value>
-        public int BurstSize { get; set; }
+        public int BurstSize
+        {
+            get
+            {
+                return targetQueueLength + 1;
+            }
+            set
+            {
+                targetQueueLength = value - 1;
+            }
+        }
+
+        /// <summary>
+        /// The minimum internal queue length required before checking events
+        /// </summary>
+        private int targetQueueLength;
     }
 }
