@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kentor.Log4NetExtensions.BurstFilter", "Kentor.Log4NetExtensions.BurstFilter\Kentor.Log4NetExtensions.BurstFilter.csproj", "{3009079D-4E36-48CA-A978-CC342D985AE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kentor.Log4NetExtensions.BurstFilter", "Kentor.Log4NetExtensions.BurstFilter\Kentor.Log4NetExtensions.BurstFilter.csproj", "{3009079D-4E36-48CA-A978-CC342D985AE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{195F0EEF-8DEA-4F4C-82CC-6FB3E9799B1E}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kentor.Log4NetExtensions.BurstFilter.Tests", "Kentor.Log4NetExtensions.BurstFilter.Tests\Kentor.Log4NetExtensions.BurstFilter.Tests.csproj", "{92D9E70D-FB71-49B7-BBF3-5BAC61C942F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kentor.Log4NetExtensions.BurstFilter.Tests", "Kentor.Log4NetExtensions.BurstFilter.Tests\Kentor.Log4NetExtensions.BurstFilter.Tests.csproj", "{92D9E70D-FB71-49B7-BBF3-5BAC61C942F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFED3807-2061-4BF4-8A08-57B28EE96E4E}
 	EndGlobalSection
 EndGlobal
